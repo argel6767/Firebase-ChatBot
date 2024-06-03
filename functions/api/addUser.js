@@ -2,10 +2,6 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const { logger } = functions;
 
-
-    admin.initializeApp();
-
-
 const db = admin.firestore();
 
 exports.addUser = functions.https.onCall(async (data, context) => {
