@@ -13,8 +13,8 @@ exports.addUser = functions.https.onCall(async (data, context) => {
     }
 
     // Create a new document with no fields under the chats collection
-    const userRef = db.collection('chats');
-    await admin.firestore().add(userId);
+    data = {};
+    const userRef = await db.collection("chats").doc(userId).set(data);
 
     return { message: 'User added to chat successfully!' };
 } catch (error) {

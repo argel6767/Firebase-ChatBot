@@ -11,8 +11,8 @@ exports.deleteUser = functions.https.onCall(async(data, context) => {
             throw new functions.https.HttpsError("invalid-argument", "User ID is required.");
         }
 
-        const userRef = db.collection("chats");
-        await admin.firestore().doc(userId).delete();
+        const userRef = await db.collection("users").doc(userId).delete();
+        logger.log("User delelted!");
 
         return { message: "User deleted successfully! "};
 
